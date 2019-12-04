@@ -11,4 +11,27 @@ class BoutiqueController extends AbstractController
             "categories" =>$categories,
         ]);
     }
+
+    public function rayon(BoutiqueService $boutique, $idCategorie)
+    {
+        $produits = $boutique->findProduitsByCategorie($idCategorie);
+        return $this->render('boutique/rayon.html.twig', [
+            "produits" =>$produits,
+        ]);
+    }
+
+    public function produit(BoutiqueService $boutique)
+    {
+
+        return $this->render('boutique/produit.html.twig', [
+
+        ]);
+    }
+
+    public function contact()
+    {
+        return $this->render('default/contact.html.twig', [
+
+        ]);
+    }
 }

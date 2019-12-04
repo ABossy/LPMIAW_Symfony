@@ -1,15 +1,42 @@
 home_page:
-  path: /home
+  path: /{_locale}/home
   controller: App\Controller\DefaultController::index
+  requirements:
+    _locale: '%app.supported_locales%'
+  defaults:
+    _locale: 'fr'
 
 boutique_page:
-  path: /boutique
+  path: /{_locale}/boutique
   controller: App\Controller\BoutiqueController::index
+  requirements:
+    _locale: '%app.supported_locales%'
+  defaults:
+    _locale: 'fr'
+
+rayon_page:
+  path: /{_locale}/boutique/rayon/{idCategorie}
+  controller: App\Controller\BoutiqueController::rayon
+  requirements:
+    _locale: '%app.supported_locales%'
+  defaults:
+    _locale: 'fr'
 
 produit_page:
-  path: /produit
-  controller: App\Controller\ProduitController::index
+  path: /{_locale}/panier
+  controller: App\Controller\BoutiqueController::produit
+  requirements:
+    _locale: '%app.supported_locales%'
+  defaults:
+    _locale: 'fr'
 
 contact_page:
-  path: /contact
-  controller: App\Controller\ContactController::index
+  path: /{_locale}/contact
+  controller: App\Controller\BoutiqueController::contact
+  requirements:
+    _locale: '%app.supported_locales%'
+  defaults:
+    _locale: 'fr'
+
+test_page:
+  path: /{_locale}/test
