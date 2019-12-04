@@ -1,0 +1,15 @@
+home_page:
+  path: /home
+  controller: App\Controller\DefaultController::index
+
+boutique_page:
+  path: /boutique
+  controller: App\Controller\BoutiqueController::index
+
+produit_page:
+  path: /produit
+  controller: App\Controller\ProduitController::index
+
+contact_page:
+  path: /contact
+  controller: App\Controller\ContactController::index
