@@ -22,9 +22,17 @@ rayon_page:
   defaults:
     _locale: 'fr'
 
-produit_page:
+panier_page:
   path: /{_locale}/panier
-  controller: App\Controller\BoutiqueController::produit
+  controller: App\Controller\PanierController::index
+  requirements:
+    _locale: '%app.supported_locales%'
+  defaults:
+    _locale: 'fr'
+
+ajout_produit:
+  path: /{_locale}/panier/ajout/{idProduit}
+  controller: App\Controller\PanierController::ajoutPanier
   requirements:
     _locale: '%app.supported_locales%'
   defaults:

@@ -20,13 +20,7 @@ class BoutiqueController extends AbstractController
         ]);
     }
 
-    public function produit(BoutiqueService $boutique)
-    {
 
-        return $this->render('boutique/produit.html.twig', [
-
-        ]);
-    }
 
     public function contact()
     {

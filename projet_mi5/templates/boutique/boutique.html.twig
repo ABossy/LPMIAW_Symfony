@@ -10,13 +10,15 @@
     <div class="row">
     {% for item in categories %}
             <div class="col-4">
-                <div class="card clickable" style="width: 18rem;" onclick="location = '/fr/panier'">
+                <a href="{{ path ('rayon_page', {'idCategorie':item.id}) }}">
+                <div class="card clickable" style="width: 18rem;" >
                     <img src="{{ asset(item.visuel) }}" class="card-img-top" alt="Fruits">
                     <div class="card-body">
                         <h4 class="card-title" >{{ item.libelle }}</h4>
                         <p class="card-text"><i>{{ item.texte }}</i></p>
                     </div>
                 </div>
+                </a>
             </div>
     {% endfor %}
     </div>
