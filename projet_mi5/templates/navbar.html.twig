@@ -49,12 +49,9 @@
                 </span>
             </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" id="searchString" type="text"
-                   placeholder="Chercher un produit..." aria-label="Search">
-            <button class="btn btn-secondary my-2 my-sm-0" id="searchButton">
-                <i class="fas fa-search"></i>
-            </button>
+        <form action="{{ path('search') }}" method="get" class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" id="searchText" name="search" type="search" placeholder="" aria-label="Search">
+            <button class="btn btn-outline-light my-2 my-sm-0" type="submit" id="searchButton"><i class="fas fa-search"></i></button>
         </form>
     </div>
 </nav>

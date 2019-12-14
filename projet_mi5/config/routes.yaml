@@ -30,7 +30,7 @@ panier_page:
   defaults:
     _locale: 'fr'
 
-ajout_produit:
+panier_ajouter:
   path: /{_locale}/panier/ajout/{idProduit}
   controller: App\Controller\PanierController::ajoutPanier
   requirements:
@@ -38,9 +38,34 @@ ajout_produit:
   defaults:
     _locale: 'fr'
 
+panier_enlever:
+  path: /{_locale}/panier/remove/one/{idProduit}
+  controller: App\Controller\PanierController::panierEnlever
+  requirements:
+    _locale: '%app.supported_locales%'
+  defaults:
+    _locale: 'fr'
+
+panier_supprimer:
+  path: /{_locale}/panier/remove/all/{idProduit}
+  controller: App\Controller\PanierController::panierSupprimer
+  requirements:
+    _locale: '%app.supported_locales%'
+  defaults:
+    _locale: 'fr'
+
+
 contact_page:
   path: /{_locale}/contact
   controller: App\Controller\BoutiqueController::contact
+  requirements:
+    _locale: '%app.supported_locales%'
+  defaults:
+    _locale: 'fr'
+
+search:
+  path: /{_locale}/recherche
+  controller: App\Controller\BoutiqueController::search
   requirements:
     _locale: '%app.supported_locales%'
   defaults:

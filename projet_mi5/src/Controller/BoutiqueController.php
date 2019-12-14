@@ -2,6 +2,8 @@
 namespace App\Controller;
 use App\Service\BoutiqueService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
+
 class BoutiqueController extends AbstractController
 {
     public function index(BoutiqueService $boutique)
@@ -27,5 +29,14 @@ class BoutiqueController extends AbstractController
         return $this->render('default/contact.html.twig', [
 
         ]);
+    }
+
+    public function search(BoutiqueService $boutiqueService, Request $request)
+    {
+        $searchText = $request->get('search');
+        $produits = $boutiqueService->findProduitsByLibelleOrTexte($searchText);
+        return $this->render('boutique/rayon.html.twig', [
+            "produits" => $produits ]);
+
     }
 }

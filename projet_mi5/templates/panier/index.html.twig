@@ -1,11 +1,11 @@
 {% extends "base.html.twig" %}
 {% block content %}
+<main role="main" class="container">
     <h1>Panier</h1>
     <div class="row">
         <div class="alert alert-dark col-md-12">
             <h1>
-                <i class="fas fa-shopping-cart"></i> 2 produit(s) :
-                <b>4,95 €</b>
+                <i class="fas fa-shopping-cart"></i> 2 produit(s) : <b>{{ prix }} $</b>
             </h1>
             <div class="col-md-12 btn-group btn-group-lg" role="group">
                 <a class="btn btn-secondary" href="{{ path ('boutique_page') }}">
@@ -23,53 +23,64 @@
             <tr>
                 <th></th>
                 <th>Produit</th>
-                <th class="text-right"></th>
-                <th>Quantité</th>
-                <th class="text-right">Total</th>
+                <th>Quantite</th>
+                <th>Prix</th>
+                <th>Total</th>
                 <th>Supprimer</th>
             </tr>
             </thead>
             <tbody>
-                {% for item in produits %}
+            {% for item in panier %}
+            {% set product = item['item'] %}
+            {% set quantity = item['quantity'] %}
+            <tr>
+                <td>
                     <div class="col-4">
-                        <div class="card clickable" style="width: 18rem;" >
-                            <img src="{{ asset(item.visuel) }}" class="card-img-top" alt="Fruits">
-                            <div class="card-body">
-                                <h4 class="card-title" >{{ item.libelle }}</h4>
-                                <p class="card-text"><i>{{ item.texte }}</i></p>
-                            </div>
+                        <div class="card clickable" style="width: 5rem;" >
+                            <img src="{{ asset(product.visuel) }}" class="card-img-top" alt="Fruits">
                         </div>
                     </div>
-                    <a href="/panier/enlever/{{ item.id }}">
-                        <i class="fas fa-minus-square text-muted"></i>
-                    </a>
-                    1
-                    <a href="/panier/ajouter/{{ item.id }}">
-                        <i class="fas fa-plus-square text-muted"></i>
-                    </a>
-
-                <td class="text-right">
-                    2,11 €
                 </td>
                 <td>
-                    <a href="/panier/supprimer/{{ item.id }}">
-                        <i class="fas fa-trash text-muted"
-                           data-toggle="tooltip" title="Supprimer {{ item.texte }}" data-placement="right" data-html="true"></i>
+                    <h4 class="card-title" >{{ product.libelle }}</h4>
+                </td>
+                <td>
+                    <a href="{{ path('panier_enlever', {idProduit: product.id}) }}">
+                        <i class="fa fa-minus mr-2"></i>
+                    </a>
+                    {{ quantity }}
+                    <a href="{{ path('panier_ajouter', {idProduit: product.id}) }}">
+                        <i class="fa fa-plus ml-2"></i>
                     </a>
                 </td>
-
+                <td>
+                {{ product.prix }}$
+                </td>
+                <td>
+                    {{ prix }} $
+                </td>
+                <td>
+                    <a href="{{ path('panier_supprimer', {idProduit: product.id}) }}">
+                        <i class="fas fa-trash text-muted"></i>
+                    </a>
+                </td>
+            </tr>
             {% endfor %}
             </tbody>
             <thead>
             <tr>
                 <th class="text-right" colspan="4">
-                    Total
-                </th>
+                    Total                        </th>
                 <th class="text-right">
-                    4,95 €
+                    {{prix}}$
                 </th>
-             </tr>
+                <th>
+
+                </th>
+            </tr>
             </thead>
+
         </table>
     </div>
+</main>
 {% endblock %}
