@@ -1,18 +1,21 @@
 <?php
 namespace App\Controller;
+use App\Entity\Produit;
 use App\Service\BoutiqueService;
 use App\Service\PanierService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class PanierController extends AbstractController
 {
 
-    public function index(PanierService $panierService, BoutiqueService $boutiqueService)
+    public function index(PanierService $panierService)
     {
+        $em = $this->getDoctrine()->getManager();
+        $repo = $em->getRepository(Produit::class);
         $panierWithItems = [];
         $panier          = $panierService->getContenu();
         $prixTotal       = $panierService->getTotal();
         foreach ($panier as $id => $quantity) {
-            $panierWithItems[] = ['item' =>$boutiqueService->findProduitById($id), 'quantity' => $quantity];
+            $panierWithItems[] = ['item' =>$repo->find($id), 'quantity' => $quantity];
         }
         return $this->render(
             'panier/index.html.twig',

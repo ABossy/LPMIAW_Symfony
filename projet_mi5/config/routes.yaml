@@ -46,6 +46,7 @@ panier_enlever:
   defaults:
     _locale: 'fr'
 
+
 panier_supprimer:
   path: /{_locale}/panier/remove/all/{idProduit}
   controller: App\Controller\PanierController::panierSupprimer
@@ -54,6 +55,13 @@ panier_supprimer:
   defaults:
     _locale: 'fr'
 
+panier_validation:
+  path: /{_locale}/panier/{idUser}
+  controller: App\Controller\PanierController::panierToCommande
+  requirements:
+    _locale: '%app.supported_locales%'
+  defaults:
+    _locale: 'fr'
 
 contact_page:
   path: /{_locale}/contact
@@ -73,3 +81,20 @@ search:
 
 test_page:
   path: /{_locale}/test
+
+
+user_accueil:
+  path: /{_locale}/accueil-utilisateur
+  controller: App\Controller\UserController::index
+  requirements:
+    _locale: '%app.supported_locales%'
+  defaults:
+    _locale: 'fr'
+
+user_inscription:
+  path: /{_locale}/inscription
+  controller: App\Controller\UserController::new
+  requirements:
+    _locale: '%app.supported_locales%'
+  defaults:
+    _locale: 'fr'

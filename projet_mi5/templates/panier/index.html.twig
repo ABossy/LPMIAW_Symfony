@@ -57,7 +57,7 @@
                 {{ product.prix }}$
                 </td>
                 <td>
-                    {{ prix }} $
+                    {{product.prix * quantity }} $
                 </td>
                 <td>
                     <a href="{{ path('panier_supprimer', {idProduit: product.id}) }}">

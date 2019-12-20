@@ -1,22 +1,24 @@
 <?php
 namespace App\Service;
-use Symfony\Component\HttpFoundation\RequestStack;
+use App\Repository\ProduitRepository;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
-class PanierService extends BoutiqueService {
+
+class PanierService {
     const PANIER_SESSION = 'panier';
     /**
      * @var SessionInterface
      */
     private $session;
+    private $repo;
     private $panier;
 
     public function __construct(
         SessionInterface $session,
-        BoutiqueService $boutiqueService
+        ProduitRepository $repo
     ) {
         $this->session = $session;
-        $this->boutiqueService = $boutiqueService;
+        $this->repo = $repo;
         $this->panier = $this->session->get(self::PANIER_SESSION, []);
     }
     /**
@@ -33,7 +35,7 @@ class PanierService extends BoutiqueService {
     {
         $total = 0;
         foreach ($this->getContenu() as $id => $quantity) {
-            $total += $this->boutiqueService->findProduitById($id)['prix'] * $quantity;
+            $total += $this->repo->findOneById($id)->getPrix() * $quantity;
         }
         return $total;
     }
@@ -101,5 +103,8 @@ class PanierService extends BoutiqueService {
         $this->session->set(self::PANIER_SESSION, $this->panier);
     }
 
+    public function panierToCommande(){
+
+    }
 
 }

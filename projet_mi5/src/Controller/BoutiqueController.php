@@ -1,28 +1,27 @@
 <?php
 namespace App\Controller;
-use App\Service\BoutiqueService;
+use App\Entity\Categorie;
+use App\Entity\Produit;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 
 class BoutiqueController extends AbstractController
 {
-    public function index(BoutiqueService $boutique)
+    public function index()
     {
-        $categories = $boutique->findAllCategories();
+        $categories = $this->getDoctrine()->getRepository(Categorie::class)->findAll();
         return $this->render('boutique/boutique.html.twig', [
             "categories" =>$categories,
         ]);
     }
 
-    public function rayon(BoutiqueService $boutique, $idCategorie)
+    public function rayon($idCategorie)
     {
-        $produits = $boutique->findProduitsByCategorie($idCategorie);
+        $produits = $this->getDoctrine()->getRepository(Produit::class)->findByCategorie($idCategorie);
         return $this->render('boutique/rayon.html.twig', [
             "produits" =>$produits,
         ]);
     }
-
-
 
     public function contact()
     {
@@ -31,10 +30,10 @@ class BoutiqueController extends AbstractController
         ]);
     }
 
-    public function search(BoutiqueService $boutiqueService, Request $request)
+    public function search(Request $request)
     {
         $searchText = $request->get('search');
-        $produits = $boutiqueService->findProduitsByLibelleOrTexte($searchText);
+        $produits = $this->getDoctrine()->getRepository(Produit::class)->findProduitsByName($searchText);
         return $this->render('boutique/rayon.html.twig', [
             "produits" => $produits ]);
 
