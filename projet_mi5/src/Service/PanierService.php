@@ -104,7 +104,6 @@ class PanierService {
     }
 
     public function panierToCommande(){
-
     }
 
 }

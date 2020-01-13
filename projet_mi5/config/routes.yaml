@@ -79,8 +79,6 @@ search:
   defaults:
     _locale: 'fr'
 
-test_page:
-  path: /{_locale}/test
 
 
 user_accueil:
