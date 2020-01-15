@@ -1,6 +1,10 @@
 <?php
 namespace App\Service;
+use App\Entity\Commande;
+use App\Entity\LigneCommande;
+use App\Entity\User;
 use App\Repository\ProduitRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 
@@ -12,14 +16,18 @@ class PanierService {
     private $session;
     private $repo;
     private $panier;
+    private $em;
 
     public function __construct(
         SessionInterface $session,
-        ProduitRepository $repo
+        ProduitRepository $repo,
+        EntityManagerInterface $em
+
     ) {
         $this->session = $session;
         $this->repo = $repo;
         $this->panier = $this->session->get(self::PANIER_SESSION, []);
+        $this->em = $em;
     }
     /**
      * @return array
@@ -103,7 +111,32 @@ class PanierService {
         $this->session->set(self::PANIER_SESSION, $this->panier);
     }
 
-    public function panierToCommande(){
+    public function removeall():void
+    {
+        $this->panier = [];
+        $this->session->set(self::PANIER_SESSION, $this->panier);
+
+    }
+
+    public function panierToCommande(User $user){
+        $commande = new Commande();
+        $commande->setUser($user);
+        $commande->setDateCommande(new \DateTime());
+        $commande->setStatut('En attente');
+
+        foreach ($this->panier  as $produitId => $quantite) {
+            $prod = $this->repo->findOneById($produitId);
+            $ligne = new LigneCommande();
+            $ligne->setCommande($commande);
+            $ligne->setPrix($prod->getPrix());
+            $ligne->setProduit($prod);
+            $ligne->setQuantite($quantite);
+            $this->em->persist($ligne);
+        }
+        $this->em->persist($commande);
+        $this->em->flush();
+
+        $this->removeall();
     }
 
 }

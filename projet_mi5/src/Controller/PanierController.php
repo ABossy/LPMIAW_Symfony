@@ -1,6 +1,7 @@
 <?php
 namespace App\Controller;
 use App\Entity\Produit;
+use App\Entity\User;
 use App\Service\BoutiqueService;
 use App\Service\PanierService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -43,8 +44,17 @@ class PanierController extends AbstractController
         return $this->redirectToRoute('panier_page');
     }
 
+    public function validation(PanierService $panierService){
+        $panierService->panierToCommande($this->getUser());
+        return $this->render( 'panier/validation.html.twig');
 
+    }
 
+    public function iconePanier(PanierService $panierService){
+            return $this->render('iconePanier.html.twig',[
+                'articles'=>$panierService->getNbProduits()
+            ]);
+    }
 
 
 
