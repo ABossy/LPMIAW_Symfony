@@ -6,7 +6,7 @@
     </header>
     <body>
       <trans-unit id="GF_NsyJ" resname="Hello">
-        <source>Hello</source>
+        <source>Bonjour</source>
         <target>Bonjour</target>
       </trans-unit>
     </body>

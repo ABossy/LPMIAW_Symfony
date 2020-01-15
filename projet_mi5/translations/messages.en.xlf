@@ -5,9 +5,9 @@
       <tool tool-id="symfony" tool-name="Symfony"/>
     </header>
     <body>
-      <trans-unit id="GF_NsyJ" resname="Hello">
-        <source>Hello</source>
-        <target>__Hello</target>
+      <trans-unit id="GF_NsyJ" resname="Bonjour">
+        <source>Bonjour</source>
+        <target>Hello</target>
       </trans-unit>
     </body>
   </file>

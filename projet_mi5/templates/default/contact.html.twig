@@ -1,11 +1,21 @@
 {% extends "base.html.twig" %}
 
 {% block content %}
-<div class="card clickable" style="width: 18rem;">
-    <img src="/images/iut2_info.png" class="card-img" alt="logo IUT2">
-    <div class="card-body">
-        <h1 class="card-title"><i class="fas fa-code"></i> Licence Pro MI AW</h1>
-        <h2 class="card-title"><i class="fab fa-symfony"></i> Module MI5</h2>
-    </div>
-</div>
+    <main role="main" class="container-fluid">
+        <div class="row">
+            <div class="col-md-10">
+                <div class="main-div">
+                    <!-- debut du block content !-->
+                    <div class="card clickable" onclick="window.open('https://www-info.iut2.univ-grenoble-alpes.fr/licence-pro-mi/')">
+                        <img src="/images/iut2_info.png" class="card-img" alt="logo IUT2">
+                        <div class="card-body">
+                            <h1 class="card-title"><i class="fas fa-code"></i> Licence Pro MI AW</h1>
+                            <h2 class="card-title"><i class="fab fa-symfony"></i> Module MI5</h2>
+                            <p><i class="far fa-copyright"></i> As.Graf, 2019</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</main>
 {% endblock %}
