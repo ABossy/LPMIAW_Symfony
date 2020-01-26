@@ -1,5 +1,6 @@
 <?php
 namespace App\Controller;
+use App\Entity\Commande;
 use App\Entity\Produit;
 use App\Entity\User;
 use App\Service\BoutiqueService;
@@ -44,9 +45,27 @@ class PanierController extends AbstractController
         return $this->redirectToRoute('panier_page');
     }
 
+    public function panierVider(PanierService $panierService)
+    {
+        $panierService->removeall();
+        return $this->redirectToRoute('panier_page');
+    }
+
     public function validation(PanierService $panierService){
-        $panierService->panierToCommande($this->getUser());
-        return $this->render( 'panier/validation.html.twig');
+        if($panierService->getNbProduits() == 0){
+            return $this->render( 'panier/validation-empty.html.twig');
+        }
+        if($this->getUser()){
+            $commandes = $this->getDoctrine()->getRepository(Commande::class)->findBy(['user' => $this->getUser()->getId()]);
+            $commande = $panierService->panierToCommande($this->getUser());
+            return $this->render( 'panier/validation.html.twig',[
+                'user' => $this->getUser(),
+                'commandes' => $commandes,
+                'commande' => $commande
+            ]);
+        } else{
+            return $this->redirectToRoute( 'app_login');
+        }
 
     }
 

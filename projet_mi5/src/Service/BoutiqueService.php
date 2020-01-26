@@ -72,94 +72,94 @@ class BoutiqueService {
     private $categories = [
         [
             "id" => 1,
-            "libelle" => "Fruits",
+            "libelle" => "NIKE",
             "visuel" => "images/fruits.jpg",
-            "texte" => "De la passion ou de ton imagination",
+            "texte" => "Just do it",
         ],
         [
             "id" => 3,
-            "libelle" => "Junk Food",
+            "libelle" => "Adidas",
             "visuel" => "images/junk_food.jpg",
-            "texte" => "Chère et cancérogène, tu es prévenu(e)",
+            "texte" => "impossible is nothing",
         ],
         [
             "id" => 2,
-            "libelle" => "Légumes",
+            "libelle" => "Reebok",
             "visuel" => "images/legumes.jpg",
-            "texte" => "Plus tu en manges, moins tu en es un"],
+            "texte" => "Be more human"],
     ];
     private $produits = [
         [
             "id" => 1,
             "idCategorie" => 1,
-            "libelle" => "Pomme",
-            "texte" => "Elle est bonne pour la tienne",
+            "libelle" => "Nike React Element 55",
+            "texte" => "Des touches de couleur sur toute la surface lui confèrent un look parfaitement équilibré et stylé.",
             "visuel" => "images/pommes.jpg",
-            "prix" => 3.42
+            "prix" => 130
         ],
         [
             "id" => 2,
             "idCategorie" => 1,
-            "libelle" => "Poire",
-            "texte" => "Ici tu n'en es pas une",
+            "libelle" => "Nike Air Force 1 '07",
+            "texte" => "Cette silhouette iconique du basketball se pare d’une finition revisitée de ses éléments les plus remarquables : le cuir impeccable, les couleurs vives et l’éclat qui vous met naturellement en valeur",
             "visuel" => "images/poires.jpg",
-            "prix" => 2.11
+            "prix" => 100
         ],
         [
             "id" => 3,
             "idCategorie" => 1,
-            "libelle" => "Pêche",
-            "texte" => "Elle va te la donner",
+            "libelle" => "Nike Air Max 98 LX ",
+            "texte" => "Nike Air Max 98 LX arbore les lignes du modèle original inspirées des parois du Grand Canyon ",
             "visuel" => "images/peche.jpg",
-            "prix" => 2.84
+            "prix" => 200
         ],
         [
             "id" => 4,
             "idCategorie" => 2,
-            "libelle" => "Carotte",
-            "texte" => "C'est bon pour ta vue",
+            "libelle" => "SAMBAROSE",
+            "texte" => "Basée sur l'iconique Samba adidas, cette chaussure SAMBAROSE te fait prendre de la hauteur avec sa semelle compensée tendance.",
             "visuel" => "images/carottes.jpg",
-            "prix" => 2.90
+            "prix" => 99
         ],
         [
             "id" => 5,
             "idCategorie" => 2,
-            "libelle" => "Tomate",
-            "texte" => "Fruit ou Légume ? Légume",
+            "libelle" => "Chaussure de trail-running Terrex Agravic TR UB",
+            "texte" => "Le confort et l'accroche pour te sortir des sentiers battus dans un style suède moderne pour la ville. Cette chaussure de trail-running adidas Terrex Agravic TR UB t'assure une foulée tout en souplesse sur le bitume ou le parcours. ",
             "visuel" => "images/tomates.jpg",
-            "prix" => 1.70
+            "prix" => 90
         ],
         [
             "id" => 6,
             "idCategorie" => 2,
-            "libelle" => "Chou Romanesco",
-            "texte" => "Mange des fractales",
+            "libelle" => "Chaussure Nite Jogger",
+            "texte" => "Les détails flashy et réfléchissants sur cette chaussure adidas sont un clin d'œil à la Nite Jogger des 80's.",
             "visuel" => "images/romanesco.jpg",
-            "prix" => 1.81
+            "prix" => 130
         ],
         [
             "id" => 7,
             "idCategorie" => 3,
-            "libelle" => "Nutella",
-            "texte" => "C'est bon, sauf pour ta santé",
+            "libelle" => "DMX Trail Shadow",
+            "texte" => "Cette DMX Trail Shadow s'inspire des chaussures de running et de randonnée des années 2000.",
             "visuel" => "images/nutella.jpg",
-            "prix" => 4.50
+            "prix" => 180
         ],
         [
             "id" => 8,
             "idCategorie" => 3,
-            "libelle" => "Pizza",
-            "texte" => "Y'a pas pire que za",
+            "libelle" => "Workout Plus",
+            "texte" => "Nous allons rappeler aux mordus de sneakers pourquoi notre Workout Plus est une véritable icône, en revenant à l'essentiel. ",
             "visuel" => "images/pizza.jpg",
-            "prix" => 8.25
+            "prix" => 90
         ],
         [
             "id" => 9,
             "idCategorie" => 3,
-            "libelle" => "Oreo",
-            "texte" => "Seulement si tu es un smartphone",
+            "libelle" => "Reebok Royal Bridge 3.0",
+            "texte" => "Une chaussure de running des 90's sous un nouveau jour. Avec sa tige basse, elle maximise le confort et permet une foulée fluide",
             "visuel" => "images/oreo.jpg",
-            "prix" => 2.50
+            "prix" => 75
         ],
     ];
 }

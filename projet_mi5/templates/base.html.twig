@@ -12,7 +12,8 @@
     <body>
     <!--navbar -->
         {% include "navbar.html.twig" %}
-        {% block body %}{% endblock %}
+        {% block body %}{{ render(controller('App\\Controller\\BoutiqueController::plusVendu')) }}
+        {% endblock %}
         {% block content %}{% endblock %}
         {% block script %}{% endblock %}
         {% block style %}{% endblock %}

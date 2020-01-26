@@ -1,0 +1,18 @@
+<div class="container">
+    <div class="card">
+        <h4>Top 5 des ventes</h4>
+        <div class="row row-cols-1 row-cols-sm-5">
+        {% for plusVendu in listPlusVendu %}
+            {% set produit = plusVendu[0] %}
+            <div class="d-flex col">
+                <div class="card">
+                    <a href="{{ path('rayon_page', {idCategorie: produit.categorie.id}) }}">
+                    <img src="{{ asset(produit.visuel) }}" alt="" class="card-img-top">
+                    {{ produit.libelle }}: {{ plusVendu.quantite }} commandes
+                    </a>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+</div>

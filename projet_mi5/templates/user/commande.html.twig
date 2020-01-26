@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <h1>Historique de vos commandes </h1>
+    <div class="row">
+        {% for commande in commandes %}
+            <div class="col-4">
+                <div class="card clickable">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            {{ user.Prenom }} {{ user.nom }}</h5><hr>
+                            <p>N°: {{commande.id}}</p>
+                            <p>Commandé le {{ commande.dateCommande | date('d/m/Y \\à H:i') }}</p>
+                            <p>Statut : {{ commande.statut }}</p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

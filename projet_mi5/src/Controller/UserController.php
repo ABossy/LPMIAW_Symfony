@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Commande;
 use App\Entity\User;
 use App\Form\UserType;
 use App\Repository\UserRepository;
@@ -43,13 +44,23 @@ class UserController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->flush();
-           // $this->session->set('user', $user->getId());
+            $this->session->set('user', $user->getId());
             return $this->redirectToRoute('user_accueil');
         }
 
         return $this->render('user/new.html.twig', [
             'user' => $user,
             'form' => $form->createView(),
+        ]);
+    }
+
+
+    public function commandes(Request $request): Response
+    {
+        $commandes = $this->getDoctrine()->getRepository(Commande::class)->findBy(['user' => $this->getUser()->getId()], ['id'=> 'DESC']);
+        return $this->render('user/commande.html.twig', [
+            'user' => $this->getUser(),
+            'commandes' => $commandes,
         ]);
     }
 

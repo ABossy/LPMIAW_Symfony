@@ -9,13 +9,13 @@
 
     <div class="row">
         {% for item in produits %}
-            <div class="col-4">
-                <div class="card clickable" style="width: 18rem;" >
+            <div class="d-flex col-12 col-sm-6 col-md-6 col-lg-4">
+                <div class="card clickable">
                     <img src="{{ asset(item.visuel) }}" class="card-img-top" alt="Fruits">
                     <div class="card-body">
                         <h4 class="card-title">{{ item.libelle }}</h4>
                         <p class="card-text"><i>{{ item.texte }}</i></p>
-                        <p class="card-text"><i>{{ item.prix}}$</i></p>
+                        <p class="card-text"><i>{{ item.prix}}€</i></p>
                         <a href="{{ path('panier_ajouter', { idProduit: item.id }) }}" class="btn btn-success">Ajouter au panier </a>
                     </div>
                 </div>

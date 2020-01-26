@@ -137,6 +137,8 @@ class PanierService {
         $this->em->flush();
 
         $this->removeall();
+
+        return $commande;
     }
 
 }

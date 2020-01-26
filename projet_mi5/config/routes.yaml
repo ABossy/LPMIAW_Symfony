@@ -55,6 +55,13 @@ panier_supprimer:
   defaults:
     _locale: 'fr'
 
+panier.vider:
+  path: /{_locale}/panier/remove/all
+  controller: App\Controller\PanierController::panierVider
+  requirements:
+    _locale: '%app.supported_locales%'
+  defaults:
+    _locale: 'fr'
 
 panier_validation:
   path: /{_locale}/validation
@@ -81,7 +88,6 @@ search:
     _locale: 'fr'
 
 
-
 user_accueil:
   path: /{_locale}/accueil-utilisateur
   controller: App\Controller\UserController::index
@@ -93,6 +99,14 @@ user_accueil:
 user_inscription:
   path: /{_locale}/inscription
   controller: App\Controller\UserController::new
+  requirements:
+    _locale: '%app.supported_locales%'
+  defaults:
+    _locale: 'fr'
+
+commande:
+  path: /{_locale}/mes-commandes
+  controller: App\Controller\UserController::commandes
   requirements:
     _locale: '%app.supported_locales%'
   defaults:

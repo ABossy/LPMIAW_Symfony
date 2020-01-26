@@ -31,4 +31,18 @@ class ProduitRepository extends ServiceEntityRepository
            ->getQuery()
            ->getResult();
     }
+
+    public function findTopVente(int $limit = 5)
+    {
+        return $this->createQueryBuilder('article')
+            ->addSelect('SUM(lComm.quantite) as quantite')
+            ->join('article.ligneCommandes', 'lComm')
+            ->groupBy('lComm.produit')
+            ->orderBy('quantite', 'DESC')
+            ->setMaxResults($limit)
+            ->getQuery()
+            ->getResult();
+    }
+
+
 }
